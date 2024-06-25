@@ -5,7 +5,6 @@ from bs4 import BeautifulSoup
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
 
-#============================================================================================= SCRAPER =====================================================================================================
 
 def scrap_web():
     url = url_entry.get()
@@ -37,7 +36,6 @@ def scrap_web():
         res_txt.insert(tk.END, f"Error: {e}")
         res_txt.config(state='disabled')
 
-#=========================================================================================== EXPORT RESULTS =============================================================================================
 
 def export_results(format):
     data = res_txt.get(1.0, tk.END)
@@ -65,7 +63,6 @@ def export_results(format):
                 with open(save_file_path, 'w', encoding='utf-8') as txtfile:
                     txtfile.write(data)
 
-#================================================================================================= GENERATE PDF ============================================================================================
 
 def generate_pdf(file_path, data):
     c = canvas.Canvas(file_path, pagesize=letter)
@@ -81,7 +78,6 @@ def generate_pdf(file_path, data):
         y -= 20
     c.save()
 
-#============================================================================================= INSTRUCTIONS ==================================================================================================
 
 def instructions():
     instructions_window = tk.Toplevel(app)
@@ -96,7 +92,6 @@ def instructions():
     instructions_label = tk.Label(instructions_window, text=instructions_text, justify=tk.LEFT)
     instructions_label.pack(padx=10, pady=10)
 
-#========================================================================================== GUI ==============================================================================================================
 
 app = tk.Tk()
 app.title("Web Scraper with GUI")
@@ -126,7 +121,6 @@ res_txt = scrolledtext.ScrolledText(app, wrap=tk.WORD, width=60, height=10)
 res_txt.config(state='disabled')
 res_txt.grid(row=3, column=0, columnspan=3, padx=padding, pady=padding)
 
-# Adding the menubar
 menubar = Menu(app)
 app.config(menu=menubar)
 
